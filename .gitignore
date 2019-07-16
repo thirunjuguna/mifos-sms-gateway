@@ -1,0 +1,21 @@
+# folders
+bin/
+out/
+build/
+target/
+repos/
+
+# files
+.classpath
+.project
+.settings
+.gradle
+.idea
+
+*.log
+*.iml
+*.ims
+
+smsmoduledb.*
+
+!gradle/wrapper/gradle-wrapper.jar
