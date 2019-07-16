@@ -1,4 +1,4 @@
-# message-gateway
+# mifos-sms-gateway
 
 ## Build set up
 ##### To create standalone application:
