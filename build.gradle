@@ -57,6 +57,7 @@ dependencies {
     
 }
 
-task wrapper(type: Wrapper) {
+wrapper{
     gradleVersion = '1.11'
+    distributionUrl = distributionUrl.replace('bin','all')
 }
