@@ -18,7 +18,7 @@ import infobip.api.model.sms.mt.reports.SMSReportResponse;
 @RestController
 @RequestMapping("/africastalking")
 public class AfricasTalkingApiResource {
-    private static final Logger logger = LoggerFactory.getLogger(InfoBipApiResource.class);
+    private static final Logger logger = LoggerFactory.getLogger(AfricasTalkingApiResource.class);
     private final SmsOutboundMessageRepository smsOutboundMessageRepository ;
 
     @Autowired

@@ -13,26 +13,19 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import infobip.api.client.SendMultipleTextualSmsAdvanced;
-import infobip.api.config.BasicAuthConfiguration;
-import infobip.api.model.Destination;
-import infobip.api.model.sms.mt.send.Message;
-import infobip.api.model.sms.mt.send.SMSResponse;
-import infobip.api.model.sms.mt.send.SMSResponseDetails;
-import infobip.api.model.sms.mt.send.textual.SMSAdvancedTextualRequest;
+
 
 @Service(value = "africastalking")
-public class AfricastalkingMessageProvider extends SMSProvider {
+public class AfricasTalkingMessageProvider extends SMSProvider {
 
-    private static final Logger logger = LoggerFactory.getLogger(AfricastalkingMessageProvider.class);
+    private static final Logger logger = LoggerFactory.getLogger(AfricasTalkingMessageProvider.class);
 
-    private HashMap<String, SendMultipleTextualSmsAdvanced> restClients = new HashMap<>() ; //tenantId, twilio clients
     private final String callBackUrl ;
 
     private final StringBuilder builder ;
 
     @Autowired
-    public AfricastalkingMessageProvider(final HostConfig hostConfig) {
+    public AfricasTalkingMessageProvider(final HostConfig hostConfig) {
         callBackUrl = String.format("%s://%s:%d/africastalking/report/", hostConfig.getProtocol(),  hostConfig.getHostName(), hostConfig.getPort());
         logger.info("Registering call back to africastalking:"+callBackUrl);
         builder = new StringBuilder() ;
