@@ -54,7 +54,7 @@ public class AfricasTalkingMessageProvider extends SMSProvider {
 
         SmsService sms = AfricasTalking.getService(AfricasTalking.SERVICE_SMS);
 
-        List<Recipient> response = sms.send(String.valueOf(message), new String[] {mobile}, true);
+        List<Recipient> response = sms.send(message.getMessage(), new String[] {mobile}, true);
 
 //        message.setExternalId(response.getMessageId());
 //        message.setDeliveryStatus(AfricasTalkingStatus.smsStatus(response.getStatus().getGroupId()).getValue());
