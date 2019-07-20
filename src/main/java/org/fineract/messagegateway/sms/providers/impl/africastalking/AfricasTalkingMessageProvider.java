@@ -37,8 +37,6 @@ public class AfricasTalkingMessageProvider extends SMSProvider {
     @Override
     public void sendMessage(SMSBridge smsBridgeConfig, SMSMessage message) throws MessageGatewayException, IOException {
         String statusCallback = callBackUrl+message.getId() ;
-        //Based on message id, register call back. so that we get notification from Infobip about message status
-
 
         builder.setLength(0);
         builder.append(smsBridgeConfig.getCountryCode()) ;
