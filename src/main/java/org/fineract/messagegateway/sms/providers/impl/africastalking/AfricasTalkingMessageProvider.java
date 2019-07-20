@@ -1,7 +1,8 @@
 package org.fineract.messagegateway.sms.providers.impl.africastalking;
-import java.util.Collections;
-import java.util.HashMap;
 
+import com.africastalking.AfricasTalking;
+import com.africastalking.SmsService;
+import com.africastalking.sms.Recipient;
 import org.fineract.messagegateway.configuration.HostConfig;
 import org.fineract.messagegateway.constants.MessageGatewayConstants;
 import org.fineract.messagegateway.exception.MessageGatewayException;
@@ -13,6 +14,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+import java.util.List;
 
 
 @Service(value = "africastalking")
@@ -32,8 +35,33 @@ public class AfricasTalkingMessageProvider extends SMSProvider {
     }
 
     @Override
-    public void sendMessage(SMSBridge smsBridgeConfig, SMSMessage message) throws MessageGatewayException {
-        // Send Message
+    public void sendMessage(SMSBridge smsBridgeConfig, SMSMessage message) throws MessageGatewayException, IOException {
+        String statusCallback = callBackUrl+message.getId() ;
+        //Based on message id, register call back. so that we get notification from Infobip about message status
+
+
+        builder.setLength(0);
+        builder.append(smsBridgeConfig.getCountryCode()) ;
+        builder.append(message.getMobileNumber()) ;
+        String mobile = builder.toString() ;
+        logger.info("Sending SMS to " + mobile + " ...");
+
+        String username = smsBridgeConfig.getConfigValue(MessageGatewayConstants.PROVIDER_ACCOUNT_ID) ;
+        String apiKey = smsBridgeConfig.getConfigValue(MessageGatewayConstants.PROVIDER_AUTH_TOKEN) ;
+
+
+        AfricasTalking.initialize(username, apiKey);
+
+        SmsService sms = AfricasTalking.getService(AfricasTalking.SERVICE_SMS);
+
+        List<Recipient> response = sms.send(String.valueOf(message), new String[] {mobile}, true);
+
+//        message.setExternalId(response.getMessageId());
+//        message.setDeliveryStatus(AfricasTalkingStatus.smsStatus(response.getStatus().getGroupId()).getValue());
+//        logger.debug("AfricasTalkingMessageProvider.sendMessage():"+AfricasTalkingStatus.smsStatus(response.getStatus().getGroupId()).getValue());
     }
+
+
+
 
 }
