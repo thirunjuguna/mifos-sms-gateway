@@ -18,8 +18,6 @@
  */
 package org.fineract.messagegateway.sms.providers;
 
-import java.util.Collection;
-
 import org.fineract.messagegateway.exception.MessageGatewayException;
 import org.fineract.messagegateway.sms.domain.SMSBridge;
 import org.fineract.messagegateway.sms.domain.SMSMessage;
@@ -34,6 +32,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
+
+import java.io.IOException;
+import java.util.Collection;
 
 @Component
 public class SMSProviderFactory implements ApplicationContextAware {
@@ -81,6 +82,8 @@ public class SMSProviderFactory implements ApplicationContextAware {
 			logger.error(e.getMessage());
 			message.setDeliveryErrorMessage(e.getMessage());
 			message.setDeliveryStatus(SmsMessageStatusType.FAILED.getValue());
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 	
@@ -101,6 +104,8 @@ public class SMSProviderFactory implements ApplicationContextAware {
 				logger.error(e.getMessage());
 				message.setDeliveryErrorMessage(e.getMessage());
 				message.setDeliveryStatus(SmsMessageStatusType.FAILED.getValue());
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
 		}
 	}
