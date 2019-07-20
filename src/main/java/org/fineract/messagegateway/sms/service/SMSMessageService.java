@@ -92,7 +92,7 @@ public class SMSMessageService {
 		for(SMSMessage message: messages) {
 			message.setTenant(tenant.getId());
 		}
-		this.smsOutboundMessageRepository.save(messages) ;
+//		this.smsOutboundMessageRepository.save(messages) ;
 		this.executorService.execute(new MessageTask(tenant, this.smsOutboundMessageRepository, this.smsProviderFactory, messages));
 	}
 	
@@ -150,7 +150,7 @@ public class SMSMessageService {
 		@Override
 		public void run() {
 			this.smsProviderFactory.sendShortMessage(messages);
-			this.smsOutboundMessageRepository.save(messages) ;
+//			this.smsOutboundMessageRepository.save(messages) ;
 		}
 	}
 	
@@ -176,7 +176,7 @@ public class SMSMessageService {
 				page++;
 				totalPageSize = messages.getTotalPages();
 				this.smsProviderFactory.sendShortMessage(messages.getContent());
-				this.smsOutboundMessageRepository.save(messages) ;
+//				this.smsOutboundMessageRepository.save(messages) ;
 			}while (page < totalPageSize);
 			return totalPageSize;
 		}

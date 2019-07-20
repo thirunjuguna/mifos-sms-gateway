@@ -18,6 +18,7 @@
  */
 package org.fineract.messagegateway.sms.providers;
 
+import java.io.IOException;
 import java.util.Base64;
 
 import org.fineract.messagegateway.constants.MessageGatewayConstants;
@@ -28,7 +29,7 @@ import org.fineract.messagegateway.sms.domain.SMSMessage;
 public abstract class SMSProvider {
 	
 	public abstract void sendMessage(final SMSBridge smsBridgeConfig, final SMSMessage message)
-	        throws MessageGatewayException ;
+			throws MessageGatewayException, IOException;
 	
 	protected String encodeBase64(final SMSBridge smsBridgeConfig) {
 		String tenant = smsBridgeConfig.getTenantId().toString() ;

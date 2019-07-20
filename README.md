@@ -1,4 +1,4 @@
-# message-gateway
+# mifos-sms-gateway
 
 ## Build set up
 ##### To create standalone application:
@@ -6,7 +6,7 @@
 ##### To run 
   cd build/lib
   
-  java -jar message-gateway-0.0.1.jar
+  java -jar mifos-sms-gateway-0.0.1.jar
 
 ##### To create deployable war:
 ./gradlew clean build -Pprofile=deployable
@@ -14,7 +14,7 @@
 war file can be found in build/libs
  
 
-##Steps to configure Message-Gateway
+##Steps to configure Mifos SMS Gateway
 
 #### Create tenant with http://host:9191/tenants/
 	method: POST

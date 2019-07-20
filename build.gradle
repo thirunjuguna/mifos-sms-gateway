@@ -1,6 +1,7 @@
 buildscript {
     repositories {
         maven { url "http://repo.spring.io/libs-release" }
+        maven { url "https://plugins.gradle.org/m2/" }
         mavenLocal()
         mavenCentral()
     }
@@ -13,7 +14,8 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'eclipse'
-apply plugin: 'spring-boot'
+apply plugin: "org.springframework.boot"
+apply plugin: 'io.spring.dependency-management'
 apply plugin: 'license'
 
 if (project.hasProperty('profile')
@@ -28,12 +30,16 @@ repositories {
     mavenCentral()
     maven { url "http://repo.spring.io/libs-release" }
     maven { url "https://repository.jboss.org/nexus/content/repositories/releases" }
+    maven {
+        url  "http://dl.bintray.com/africastalking/java"
+    }
 }
 
 license {
     header rootProject.file('./LICENSE.md')
-    excludes(["**/*.html", "**/*.mustache", "**/package-info.java", "**/keystore.jks"])
-    strictCheck true
+    excludes(["**/*"])
+    skipExistingHeaders true
+    ignoreFailures true
 }
 
 task licenseFormatBuildScripts (type:nl.javadude.gradle.plugins.license.License) {
@@ -53,10 +59,12 @@ dependencies {
     compile('com.twilio.sdk:twilio:7.40.1')
     compile('org.drizzle.jdbc:drizzle-jdbc:1.4')
     compile('com.infobip:infobip-api-java-client:2.2.0')
+    compile('com.africastalking:core:3.4.2')
     testCompile("org.springframework.boot:spring-boot-starter-test")
     
 }
 
-task wrapper(type: Wrapper) {
+wrapper{
     gradleVersion = '1.11'
+    distributionUrl = distributionUrl.replace('bin','all')
 }

@@ -1,4 +1,4 @@
 jar {
-    baseName = 'message-gateway'
+    baseName = 'mifos-sms-gateway'
     version = '0.0.1'
 }
