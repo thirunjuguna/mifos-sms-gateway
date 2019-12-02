@@ -59,7 +59,7 @@ dependencies {
     compile('com.twilio.sdk:twilio:7.40.1')
     compile('org.drizzle.jdbc:drizzle-jdbc:1.4')
     compile('com.infobip:infobip-api-java-client:2.2.0')
-    compile('com.africastalking:core:3.4.2')
+    compile('com.africastalking:core:3.4.2.3')
     testCompile("org.springframework.boot:spring-boot-starter-test")
     
 }
