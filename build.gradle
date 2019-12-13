@@ -56,7 +56,7 @@ dependencies {
     compile('com.squareup.okhttp:okhttp:2.7.5')
     compile('com.squareup.okhttp:okhttp-urlconnection:2.7.5')
     compile('com.squareup.retrofit:retrofit:1.9.0')
-    compile('com.twilio.sdk:twilio:7.40.1')
+    compile('com.twilio.sdk:twilio:7.47.0')
     compile('org.drizzle.jdbc:drizzle-jdbc:1.4')
     compile('com.infobip:infobip-api-java-client:2.2.0')
     compile('com.africastalking:core:3.4.2')
