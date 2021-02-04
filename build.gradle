@@ -58,7 +58,7 @@ dependencies {
     compile('com.squareup.retrofit:retrofit:1.9.0')
     compile('com.twilio.sdk:twilio:7.40.1')
     compile('org.drizzle.jdbc:drizzle-jdbc:1.4')
-    compile('com.infobip:infobip-api-java-client:2.2.0')
+    compile('com.infobip:infobip-api-java-client:3.0.0')
     compile('com.africastalking:core:3.4.2')
     testCompile("org.springframework.boot:spring-boot-starter-test")
     
